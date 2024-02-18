@@ -4,6 +4,9 @@ import { Poppins } from "next/font/google"
 import Navbar from "./_components/Navbar"
 import Footer from "./_components/Footer"
 
+import { ClerkProvider } from '@clerk/nextjs'
+import GlobalProvider from "./_redux/GlobalProvider"
+
 const poppins = Poppins({ subsets: ["latin"], weight: ['200', '300', '400', '500', '600', '700'] })
 
 export const metadata = {
@@ -12,12 +15,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
-        <Navbar />
-        {children}
-        <Footer />
+    <ClerkProvider>
+      <html lang="en">
+        <body className={poppins.className}>
+          <GlobalProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </GlobalProvider>
         </body>
-    </html>
+      </html>
+    </ClerkProvider>
   )
 }
