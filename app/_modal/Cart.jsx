@@ -31,7 +31,7 @@ export default function Cart() {
           </div>
         ))}
       </div>
-      <button onClick={() => alert('Coming Soon!')} className="w-full mt-2 py-2 font-medium text-white bg-violet-500 hover:bg-violet-600 rounded-sm transition-all">Complete the Order!</button>
+      {cartItems.length > 0 && <button onClick={() => alert('Coming Soon!')} className="w-full mt-2 py-2 font-medium text-white bg-violet-500 hover:bg-violet-600 rounded-sm transition-all">Complete the Order!</button>}
     </div>
   )
 }
